@@ -1,39 +1,43 @@
-import { useEffect, useState } from 'react';
-import { Newspaper, ExternalLink, Calendar, Filter } from 'lucide-react';
-import { NewsLink } from '../types';
-import { newsLinksApi } from '../services/api';
+import { useEffect, useState } from "react";
+import { Newspaper, ExternalLink, Calendar, Filter } from "lucide-react";
+import { NewsLink } from "../types";
+import { newsLinksApi } from "../services/api";
 
 export function NewsFeed() {
   const [news, setNews] = useState<NewsLink[]>([]);
   const [filteredNews, setFilteredNews] = useState<NewsLink[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedSource, setSelectedSource] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedSource, setSelectedSource] = useState<string>("all");
 
   useEffect(() => {
-    newsLinksApi.getLatest(50).then((data) => {
-      setNews(data);
-      setFilteredNews(data);
-    }).catch(console.error);
+    newsLinksApi
+      .getLatest(50)
+      .then((data) => {
+        setNews(data);
+        setFilteredNews(data);
+      })
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
     let filtered = news;
 
     if (searchTerm) {
-      filtered = filtered.filter(item =>
-        item.headline.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.curator_take?.toLowerCase().includes(searchTerm.toLowerCase())
+      filtered = filtered.filter(
+        (item) =>
+          item.headline.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.curator_take?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    if (selectedSource !== 'all') {
-      filtered = filtered.filter(item => item.source_name === selectedSource);
+    if (selectedSource !== "all") {
+      filtered = filtered.filter((item) => item.source_name === selectedSource);
     }
 
     setFilteredNews(filtered);
   }, [searchTerm, selectedSource, news]);
 
-  const sources = Array.from(new Set(news.map(item => item.source_name)));
+  const sources = Array.from(new Set(news.map((item) => item.source_name)));
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -44,7 +48,8 @@ export function NewsFeed() {
             <h1 className="text-4xl font-bold text-gray-900">Tech News Feed</h1>
           </div>
           <p className="text-lg text-gray-600">
-            Stay updated with the latest curated technology news from trusted sources
+            Stay updated with the latest curated technology news from trusted
+            sources
           </p>
         </div>
 
@@ -56,7 +61,10 @@ export function NewsFeed() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="search"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Search News
               </label>
               <input
@@ -70,7 +78,10 @@ export function NewsFeed() {
             </div>
 
             <div>
-              <label htmlFor="source" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="source"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Filter by Source
               </label>
               <select
@@ -80,8 +91,10 @@ export function NewsFeed() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white"
               >
                 <option value="all">All Sources</option>
-                {sources.map(source => (
-                  <option key={source} value={source}>{source}</option>
+                {sources.map((source) => (
+                  <option key={source} value={source}>
+                    {source}
+                  </option>
                 ))}
               </select>
             </div>
@@ -114,11 +127,14 @@ export function NewsFeed() {
                         </span>
                         <div className="flex items-center gap-1 text-sm text-gray-500">
                           <Calendar className="w-4 h-4" />
-                          {new Date(item.published_date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                          })}
+                          {new Date(item.published_date).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )}
                         </div>
                       </div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -129,8 +145,12 @@ export function NewsFeed() {
 
                   {item.curator_take && (
                     <div className="bg-gray-50 border-l-4 border-emerald-500 rounded-r-lg p-4 mb-4">
-                      <p className="text-sm font-semibold text-gray-700 mb-1">Curator's Take:</p>
-                      <p className="text-gray-800 italic">"{item.curator_take}"</p>
+                      <p className="text-sm font-semibold text-gray-700 mb-1">
+                        Curator's Take:
+                      </p>
+                      <p className="text-gray-800 italic">
+                        "{item.curator_take}"
+                      </p>
                     </div>
                   )}
 
