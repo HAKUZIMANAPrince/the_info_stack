@@ -57,8 +57,9 @@ export function HeroSection() {
           )}
 
           {urgentJob && (
-            <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-red-200 hover:shadow-xl transition-shadow">
-              <div className="flex items-start justify-between mb-4">
+            <div className="bg-white rounded-xl shadow-lg p-6 border-4 border-red-500 hover:shadow-2xl transition-shadow relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-red-500 opacity-10 rounded-full -mr-12 -mt-12"></div>
+              <div className="flex items-start justify-between mb-4 relative z-10">
                 <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold animate-pulse">
                   Urgent Opportunity
                 </span>

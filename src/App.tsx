@@ -3,6 +3,8 @@ import { NewsTicker } from './components/NewsTicker';
 import { HeroSection } from './components/HeroSection';
 import { JobBoardWidget } from './components/JobBoardWidget';
 import { ReviewsGrid } from './components/ReviewsGrid';
+import { NewsGrid } from './components/NewsGrid';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -11,18 +13,13 @@ function App() {
       <NewsTicker />
       <HeroSection />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         <JobBoardWidget />
         <ReviewsGrid />
+        <NewsGrid />
       </div>
 
-      <footer className="bg-gray-900 text-white py-8 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} The Info Stack. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
