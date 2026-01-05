@@ -1,8 +1,5 @@
 import { Layers, Linkedin, Twitter, Github, Mail } from 'lucide-react';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
-=======
->>>>>>> 45d975d09caff3e1305b751cc91fa91d910af43b
 
 export function Footer() {
   return (
@@ -23,7 +20,6 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4 text-white">Jobs</h3>
             <ul className="space-y-2 text-sm">
               <li>
-<<<<<<< HEAD
                 <Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Browse All Jobs
                 </Link>
@@ -37,7 +33,6 @@ export function Footer() {
                 <Link to="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Post a Job
                 </Link>
-=======
                 <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Browse All Jobs
                 </a>
@@ -51,7 +46,6 @@ export function Footer() {
                 <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Post a Job
                 </a>
->>>>>>> 45d975d09caff3e1305b751cc91fa91d910af43b
               </li>
             </ul>
           </div>
@@ -60,7 +54,6 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4 text-white">Reviews</h3>
             <ul className="space-y-2 text-sm">
               <li>
-<<<<<<< HEAD
                 <Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   All Reviews
                 </Link>
@@ -74,7 +67,6 @@ export function Footer() {
                 <Link to="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Submit Review
                 </Link>
-=======
                 <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   All Reviews
                 </a>
@@ -88,7 +80,6 @@ export function Footer() {
                 <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Submit Review
                 </a>
->>>>>>> 45d975d09caff3e1305b751cc91fa91d910af43b
               </li>
             </ul>
           </div>
@@ -97,7 +88,6 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4 text-white">More</h3>
             <ul className="space-y-2 text-sm">
               <li>
-<<<<<<< HEAD
                 <Link to="/news" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   News Feed
                 </Link>
@@ -111,7 +101,6 @@ export function Footer() {
                 <Link to="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Contact
                 </Link>
-=======
                 <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   News Feed
                 </a>
@@ -125,7 +114,6 @@ export function Footer() {
                 <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   Contact
                 </a>
->>>>>>> 45d975d09caff3e1305b751cc91fa91d910af43b
               </li>
             </ul>
           </div>

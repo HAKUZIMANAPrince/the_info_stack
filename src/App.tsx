@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { NewsTicker } from './components/NewsTicker';
@@ -25,7 +24,6 @@ function App() {
         <Footer />
       </div>
     </Router>
-=======
 import { Navbar } from './components/Navbar';
 import { NewsTicker } from './components/NewsTicker';
 import { HeroSection } from './components/HeroSection';
@@ -49,7 +47,6 @@ function App() {
 
       <Footer />
     </div>
->>>>>>> 45d975d09caff3e1305b751cc91fa91d910af43b
   );
 }
 
