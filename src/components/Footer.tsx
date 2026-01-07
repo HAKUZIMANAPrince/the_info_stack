@@ -1,5 +1,5 @@
-import { Layers, Linkedin, Twitter, Github, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Layers, Linkedin, Twitter, Github, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
@@ -12,7 +12,8 @@ export function Footer() {
               <span className="text-xl font-bold">The Info Stack</span>
             </div>
             <p className="text-sm text-gray-400">
-              Your trusted source for tech jobs, product reviews, and curated news.
+              Your trusted source for tech jobs, product reviews, and curated
+              news.
             </p>
           </div>
 
@@ -20,32 +21,28 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4 text-white">Jobs</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   Browse All Jobs
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   Urgent Opportunities
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   Post a Job
                 </Link>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Browse All Jobs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Urgent Opportunities
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Post a Job
-                </a>
               </li>
             </ul>
           </div>
@@ -54,32 +51,28 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4 text-white">Reviews</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   All Reviews
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   Top Rated
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   Submit Review
                 </Link>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  All Reviews
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Top Rated
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Submit Review
-                </a>
               </li>
             </ul>
           </div>
@@ -88,32 +81,28 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4 text-white">More</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/news" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/news"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   News Feed
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/about"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                >
                   Contact
                 </Link>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  News Feed
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Contact
-                </a>
               </li>
             </ul>
           </div>
