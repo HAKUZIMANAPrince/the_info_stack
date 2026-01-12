@@ -1,46 +1,52 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { supabase } from "../lib/supabase";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([{
+      const { error } = await supabase.from("contact_messages").insert([
+        {
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
-          message: formData.message
-        }]);
+          message: formData.message,
+        },
+      ]);
 
       if (error) throw error;
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error('Error submitting contact form:', error);
-      setSubmitStatus('error');
+      console.error("Error submitting contact form:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -50,9 +56,12 @@ export function Contact() {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Get In Touch
+          </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have questions, suggestions, or partnership inquiries? We'd love to hear from you.
+            Have questions, suggestions, or partnership inquiries? We'd love to
+            hear from you.
           </p>
         </div>
 
@@ -62,8 +71,11 @@ export function Contact() {
               <Mail className="w-6 h-6 text-emerald-600" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Email Us</h3>
-            <a href="mailto:hello@theinfostack.com" className="text-emerald-600 hover:text-emerald-700">
-              hello@theinfostack.com
+            <a
+              href="mailto:hprincea1@gmail.com"
+              className="text-emerald-600 hover:text-emerald-700"
+            >
+              hprincea1@gmail.com
             </a>
           </div>
 
@@ -72,8 +84,11 @@ export function Contact() {
               <Phone className="w-6 h-6 text-emerald-600" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Call Us</h3>
-            <a href="tel:+1234567890" className="text-emerald-600 hover:text-emerald-700">
-              +1 (234) 567-890
+            <a
+              href="tel:+1 (613) 480-2689"
+              className="text-emerald-600 hover:text-emerald-700"
+            >
+              +1 (613) 480-2689
             </a>
           </div>
 
@@ -83,7 +98,8 @@ export function Contact() {
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Visit Us</h3>
             <p className="text-gray-600">
-              San Francisco, CA<br />
+              San Francisco, CA
+              <br />
               United States
             </p>
           </div>
@@ -91,13 +107,17 @@ export function Contact() {
 
         <div className="max-w-3xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              Send Us a Message
+            </h2>
 
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-green-800 font-semibold">Message sent successfully!</p>
+                  <p className="text-green-800 font-semibold">
+                    Message sent successfully!
+                  </p>
                   <p className="text-green-700 text-sm mt-1">
                     We'll get back to you as soon as possible.
                   </p>
@@ -105,9 +125,11 @@ export function Contact() {
               </div>
             )}
 
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
-                <p className="text-red-800 font-semibold">Failed to send message</p>
+                <p className="text-red-800 font-semibold">
+                  Failed to send message
+                </p>
                 <p className="text-red-700 text-sm mt-1">
                   Please try again or contact us directly via email.
                 </p>
@@ -117,7 +139,10 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-semibold text-gray-700 mb-2"
+                  >
                     Your Name *
                   </label>
                   <input
@@ -133,7 +158,10 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-gray-700 mb-2"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -150,7 +178,10 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-semibold text-gray-700 mb-2"
+                >
                   Subject *
                 </label>
                 <select
@@ -173,7 +204,10 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-semibold text-gray-700 mb-2"
+                >
                   Message *
                 </label>
                 <textarea
@@ -209,10 +243,16 @@ export function Contact() {
           </div>
 
           <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-bold text-blue-900 mb-2">Business Inquiries</h3>
+            <h3 className="text-lg font-bold text-blue-900 mb-2">
+              Business Inquiries
+            </h3>
             <p className="text-blue-800">
-              For partnership opportunities, advertising, or business collaborations, please email us at{' '}
-              <a href="mailto:business@theinfostack.com" className="font-semibold underline hover:text-blue-900">
+              For partnership opportunities, advertising, or business
+              collaborations, please email us at{" "}
+              <a
+                href="mailto:business@theinfostack.com"
+                className="font-semibold underline hover:text-blue-900"
+              >
                 business@theinfostack.com
               </a>
             </p>

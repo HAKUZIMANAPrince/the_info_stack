@@ -38,7 +38,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/admin"
                   className="text-gray-400 hover:text-emerald-400 transition-colors"
                 >
                   Post a Job
