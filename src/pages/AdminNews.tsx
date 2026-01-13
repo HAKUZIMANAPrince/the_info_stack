@@ -19,6 +19,7 @@ export function AdminNews() {
     published_date: '',
     curator_take: '',
     icon_name: 'Newspaper',
+    image_url: '',
   });
 
   useEffect(() => {
@@ -84,6 +85,7 @@ export function AdminNews() {
       published_date: newsItem.published_date,
       curator_take: newsItem.curator_take || '',
       icon_name: newsItem.icon_name,
+      image_url: newsItem.image_url || '',
     });
     setEditingId(newsItem.id);
     setShowForm(true);
@@ -97,6 +99,7 @@ export function AdminNews() {
       published_date: '',
       curator_take: '',
       icon_name: 'Newspaper',
+      image_url: '',
     });
     setEditingId(null);
     setShowForm(false);
@@ -228,6 +231,16 @@ export function AdminNews() {
                 <option value="Tablet">Tablet</option>
                 <option value="Monitor">Monitor</option>
               </select>
+
+              <input
+                type="url"
+                placeholder="News Image URL"
+                value={formData.image_url}
+                onChange={(e) =>
+                  setFormData({ ...formData, image_url: e.target.value })
+                }
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+              />
 
               <div className="flex gap-4">
                 <button
