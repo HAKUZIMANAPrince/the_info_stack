@@ -250,10 +250,10 @@ export function Contact() {
               For partnership opportunities, advertising, or business
               collaborations, please email us at{" "}
               <a
-                href="mailto:business@theinfostack.com"
+                href="mailto:hprincea1@gmail.com"
                 className="font-semibold underline hover:text-blue-900"
               >
-                business@theinfostack.com
+                hprincea1@gmail.com
               </a>
             </p>
           </div>
