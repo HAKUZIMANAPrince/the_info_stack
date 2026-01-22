@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supabase Connection Test</title>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="result"></div>
+    
+    <script type="module">
+        import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
+        
+        const supabaseUrl = 'https://ytqkxoyujwnutowqkccr.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0cWt4b3l1and3bnV0b3dxa2NjciIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzM2OTM5NzE4LCJleHAiOjIwNTI1MTU3MTh9.7d46ced021551b8b2b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8';
+        
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        
+        async function testConnection() {
+            try {
+                const { data, error } = await supabase.from('job_posts').select('count');
+                if (error) {
+                    document.getElementById('result').innerHTML = `Error: ${error.message}`;
+                } else {
+                    document.getElementById('result').innerHTML = 'Connection successful!';
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = `Connection failed: ${err.message}`;
+            }
+        }
+        
+        testConnection();
+    </script>
+</body>
+</html>

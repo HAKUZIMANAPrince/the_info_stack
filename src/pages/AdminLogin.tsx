@@ -22,7 +22,11 @@ export function AdminLogin() {
       });
 
       if (signInError) {
-        setError(signInError.message);
+        if (signInError.message.includes('Email not confirmed')) {
+          setError('Please check your email and confirm your account, or contact admin to disable email confirmation.');
+        } else {
+          setError(signInError.message);
+        }
         return;
       }
 

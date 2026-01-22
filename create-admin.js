@@ -39,6 +39,9 @@ async function createAdminUser() {
     const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        emailRedirectTo: undefined
+      }
     });
 
     if (error) {
@@ -47,9 +50,16 @@ async function createAdminUser() {
       process.exit(1);
     }
 
+    // If email confirmation is required, try to confirm the user
+    if (data.user && !data.user.email_confirmed_at) {
+      console.log('⚠️  Email confirmation may be required.');
+      console.log('Check your Supabase Auth settings to disable email confirmation for development.');
+    }
+
     console.log('✅ Admin user created successfully!');
     console.log('Email:', email);
     console.log('User ID:', data.user?.id);
+    console.log('Email confirmed:', data.user?.email_confirmed_at ? 'Yes' : 'No');
     console.log('\nYou can now login to the admin dashboard at: http://localhost:5173/admin/login');
     
   } catch (err) {
