@@ -47,16 +47,22 @@ export function AdminReviews() {
     e.preventDefault();
 
     try {
+      // Convert empty strings to null for optional fields
+      const submitData = {
+        ...formData,
+        product_image_url: formData.product_image_url.trim() || null,
+      };
+
       if (editingId) {
         const { error } = await supabase
           .from('tech_reviews')
-          .update(formData)
+          .update(submitData)
           .eq('id', editingId);
 
         if (error) throw error;
         setMessage('Review updated successfully');
       } else {
-        const { error } = await supabase.from('tech_reviews').insert([formData]);
+        const { error } = await supabase.from('tech_reviews').insert([submitData]);
 
         if (error) throw error;
         setMessage('Review created successfully');

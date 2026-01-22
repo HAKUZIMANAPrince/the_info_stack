@@ -18,6 +18,8 @@ export function AdminNews() {
     external_url: '',
     published_date: '',
     curator_take: '',
+    icon_name: 'Newspaper',
+    image_url: '',
   });
 
   useEffect(() => {
@@ -39,16 +41,23 @@ export function AdminNews() {
     e.preventDefault();
 
     try {
+      // Convert empty strings to null for optional fields
+      const submitData = {
+        ...formData,
+        curator_take: formData.curator_take.trim() || null,
+        image_url: formData.image_url.trim() || null,
+      };
+
       if (editingId) {
         const { error } = await supabase
           .from('news_links')
-          .update(formData)
+          .update(submitData)
           .eq('id', editingId);
 
         if (error) throw error;
         setMessage('News updated successfully');
       } else {
-        const { error } = await supabase.from('news_links').insert([formData]);
+        const { error } = await supabase.from('news_links').insert([submitData]);
 
         if (error) throw error;
         setMessage('News created successfully');
@@ -82,6 +91,8 @@ export function AdminNews() {
       external_url: newsItem.external_url,
       published_date: newsItem.published_date,
       curator_take: newsItem.curator_take || '',
+      icon_name: newsItem.icon_name,
+      image_url: newsItem.image_url || '',
     });
     setEditingId(newsItem.id);
     setShowForm(true);
@@ -94,6 +105,8 @@ export function AdminNews() {
       external_url: '',
       published_date: '',
       curator_take: '',
+      icon_name: 'Newspaper',
+      image_url: '',
     });
     setEditingId(null);
     setShowForm(false);
@@ -202,6 +215,37 @@ export function AdminNews() {
                   setFormData({ ...formData, curator_take: e.target.value })
                 }
                 rows={3}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+              />
+
+              <select
+                value={formData.icon_name}
+                onChange={(e) =>
+                  setFormData({ ...formData, icon_name: e.target.value })
+                }
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+              >
+                <option value="Newspaper">Newspaper</option>
+                <option value="Zap">Zap (Lightning)</option>
+                <option value="Sparkles">Sparkles</option>
+                <option value="TrendingUp">Trending Up</option>
+                <option value="Code">Code</option>
+                <option value="Cpu">Cpu</option>
+                <option value="Shield">Shield</option>
+                <option value="Wifi">Wifi</option>
+                <option value="Cloud">Cloud</option>
+                <option value="Smartphone">Smartphone</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Monitor">Monitor</option>
+              </select>
+
+              <input
+                type="url"
+                placeholder="News Image URL"
+                value={formData.image_url}
+                onChange={(e) =>
+                  setFormData({ ...formData, image_url: e.target.value })
+                }
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
               />
 

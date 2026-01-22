@@ -33,6 +33,8 @@ export interface NewsLink {
   external_url: string;
   published_date: string;
   curator_take: string | null;
+  icon_name: string;
+  image_url: string | null;
   created_at: string;
   updated_at: string;
 }
