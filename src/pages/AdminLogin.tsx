@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { LogIn, AlertCircle } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LogIn, AlertCircle } from "lucide-react";
+import { supabase } from "../lib/supabase";
 
 export function AdminLogin() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
@@ -22,17 +22,19 @@ export function AdminLogin() {
       });
 
       if (signInError) {
-        if (signInError.message.includes('Email not confirmed')) {
-          setError('Please check your email and confirm your account, or contact admin to disable email confirmation.');
+        if (signInError.message.includes("Email not confirmed")) {
+          setError(
+            "Please check your email and confirm your account, or contact admin to disable email confirmation.",
+          );
         } else {
           setError(signInError.message);
         }
         return;
       }
 
-      navigate('/admin');
+      navigate("/admin");
     } catch (err) {
-      setError('An unexpected error occurred');
+      setError("An unexpected error occurred");
     } finally {
       setLoading(false);
     }
@@ -96,13 +98,9 @@ export function AdminLogin() {
               disabled={loading}
               className="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
-
-          <p className="text-center text-sm text-gray-600 mt-6">
-            Demo credentials: Use any valid email and password to create an account
-          </p>
         </div>
       </div>
     </div>
